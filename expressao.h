@@ -26,4 +26,5 @@ int seno(int angulo);
 int cosseno(int angulo);
 int resolverPosFix(Pilha *pilha, char expressao[]);
 bool TryParse(char n, int *result);
+bool verificarExpressao(char expressao[]);
 #endif

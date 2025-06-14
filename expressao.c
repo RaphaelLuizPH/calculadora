@@ -1,6 +1,7 @@
 #include "expressao.h";
 #include <stdio.h>;
 #include <stdbool.h>;
+#include <ctype.h>
 
 Pilha *criar_pilha()
 {
@@ -51,6 +52,28 @@ int desempilhar(Pilha *pilha)
 int peek(Pilha *pilha)
 {
     return pilha->topo;
+}
+
+bool verificarExpressao(char expressao[])
+{
+    int tamanho = strlen(expressao);
+    int result;
+    for (int i = 0; i < tamanho; i++)
+    {
+        if (!isdigit(expressao[i]))
+        {
+            if (isdigit(expressao[i - 1]) && isdigit(expressao[i - 2]))
+            {
+                continue;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 int realizarOperacao(int y, int x, char operador)
